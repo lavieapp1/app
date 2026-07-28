@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lavie - تحميل التطبيق</title>
+<style>
+  body {
+    font-family: -apple-system, Tahoma, Arial, sans-serif;
+    text-align: center;
+    padding: 60px 20px;
+    background: #f7f7f7;
+  }
+  h2 { color: #222; }
+  a.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 14px 28px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  p { color: #666; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<p id="fallback" style="display:none;">
+  <a class="btn" href="https://apps.apple.com/sa/app/lavie-%D9%84%D8%A7%DA%A4%D9%8A/id6755392633">App Store</a>
+  <a class="btn" href="https://play.google.com/store/apps/details?id=com.abar.lavie.user&pcampaignid=web_share">Google Play</a>
+</p>
+
+<script>
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  var iosURL = "https://apps.apple.com/sa/app/lavie-%D9%84%D8%A7%DA%A4%D9%8A/id6755392633";
+  var androidURL = "https://play.google.com/store/apps/details?id=com.abar.lavie.user&pcampaignid=web_share";
+  var desktopURL = "https://lavie.sa";
+
+  function isMobile() {
+    return /android/i.test(ua) || /iPad|iPhone|iPod/.test(ua);
+  }
+
+  if (/android/i.test(ua)) {
+    window.location.href = androidURL;
+  } else if (/iPad|iPhone|iPod/.test(ua)) {
+    window.location.href = iosURL;
+  } else {
+    window.location.href = desktopURL;
+  }
+
+  // fallback لو التحويل ما اشتغل تلقائيًا (متصفحات تمنع auto-redirect)
+  setTimeout(function () {
+    if (!isMobile()) {
+      // إذا كان لابتوب وما تحول، خله يظهر نفس الأزرار احتياط
+      document.getElementById('fallback').style.display = 'block';
+    } else {
+      document.getElementById('fallback').style.display = 'block';
+    }
+  }, 1500);
+</script>
+
+</body>
+</html>
